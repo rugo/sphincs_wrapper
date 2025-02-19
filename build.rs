@@ -12,7 +12,7 @@ fn main() {
 
     // Generate Rust bindings using bindgen
     let bindings = bindgen::Builder::default()
-        .header("src_c/ref/ref/params/params-sphincs-sha2-tests.h") // Specify the header to generate bindings for
+        .header("src_c/ref/params/params-sphincs-sha2-tests.h") // Specify the header to generate bindings for
         .clang_arg("-Isrc_c") // Include path for header files
         .clang_arg("-DPARAMS=sphincs-sha2-tests") // Define macro for parameterization
         .generate()
