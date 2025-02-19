@@ -12,7 +12,7 @@ fn main() {
 
     // Generate Rust bindings using bindgen
     let bindings = bindgen::Builder::default()
-        .header("src_c/params/params-sphincs-sha2-tests.h") // Specify the header to generate bindings for
+        .header("src_c/ref/ref/params/params-sphincs-sha2-tests.h") // Specify the header to generate bindings for
         .clang_arg("-Isrc_c") // Include path for header files
         .clang_arg("-DPARAMS=sphincs-sha2-tests") // Define macro for parameterization
         .generate()
@@ -23,37 +23,37 @@ fn main() {
         .expect("Couldn't write bindings!");
     
     Build::new()
-    // .file("src_c/hash.h")
-    // .file("src_c/params.h")
-    // .file("src_c/address.h")
+    // .file("src_c/ref/hash.h")
+    // .file("src_c/ref/params.h")
+    // .file("src_c/ref/address.h")
     
-    // // .file("src_c/merkle.h")
-    // .file("src_c/wots.h")
-    // // .file("src_c/wotsx1.h")
-    // .file("src_c/utils.h")
-    // .file("src_c/utilsx1.h")
-    // .file("src_c/fors.h")
-    // .file("src_c/api.h")
-    // .file("src_c/hash.h")
-    // .file("src_c/thash.h")
-        // .file("src_c/randombytes.h")
-        .file("src_c/params/params-sphincs-sha2-tests.h")
-        .file("src_c/randombytes.c")
-        .file("src_c/address.c")
-        .file("src_c/merkle.c")
-        .file("src_c/wots.c")
-        .file("src_c/wotsx1.c")
-        .file("src_c/utils.c")
-        .file("src_c/utilsx1.c")
-        .file("src_c/fors.c")
-        .file("src_c/sign.c")
-        .file("src_c/sha2.c")
-        .file("src_c/hash_sha2.c")
-        .file("src_c/thash_sha2_simple.c")
-        //.file("src_c/fips202.c")
-        //.file("src_c/hash_shake.c")
-        //.file("src_c/thash_shake_robust.c")
-        .include("src_c")
+    // // .file("src_c/ref/merkle.h")
+    // .file("src_c/ref/wots.h")
+    // // .file("src_c/ref/wotsx1.h")
+    // .file("src_c/ref/utils.h")
+    // .file("src_c/ref/utilsx1.h")
+    // .file("src_c/ref/fors.h")
+    // .file("src_c/ref/api.h")
+    // .file("src_c/ref/hash.h")
+    // .file("src_c/ref/thash.h")
+        // .file("src_c/ref/randombytes.h")
+        .file("src_c/ref/params/params-sphincs-sha2-tests.h")
+        .file("src_c/ref/randombytes.c")
+        .file("src_c/ref/address.c")
+        .file("src_c/ref/merkle.c")
+        .file("src_c/ref/wots.c")
+        .file("src_c/ref/wotsx1.c")
+        .file("src_c/ref/utils.c")
+        .file("src_c/ref/utilsx1.c")
+        .file("src_c/ref/fors.c")
+        .file("src_c/ref/sign.c")
+        .file("src_c/ref/sha2.c")
+        .file("src_c/ref/hash_sha2.c")
+        .file("src_c/ref/thash_sha2_simple.c")
+        //.file("src_c/ref/fips202.c")
+        //.file("src_c/ref/hash_shake.c")
+        //.file("src_c/ref/thash_shake_robust.c")
+        .include("src_c/ref")
         .flag("-std=c99")
         .flag("-DPARAMS=sphincs-sha2-tests")
         .opt_level(3)              // Equivalent to -O3 optimization
@@ -65,5 +65,5 @@ fn main() {
     println!("cargo:rustc-link-lib=static=sphincs_wrap_c");
 
     println!("cargo:rerun-if-changed=src_c");
-    println!("cargo:rerun-if-changed=src_c/params/params-sphincs-sha2-tests.h");
+    println!("cargo:rerun-if-changed=src_c/ref/params/params-sphincs-sha2-tests.h");
 }
