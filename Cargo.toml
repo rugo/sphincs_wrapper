@@ -1,0 +1,12 @@
+cargo-features = ["edition2021"]
+
+[package]
+name = "sphincs_wrap"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[build-dependencies]
+cc = "1.0"
+bindgen = { version = "0.53", default-features = false}
